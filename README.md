@@ -1,5 +1,5 @@
 # CS1.6_IP
-This is developed for the purpose of detecting and classifying coins on the carrom board.
+My Institute Technical Summer Project required Image Processing for detection and classification of coins on a carrom board.
 It uses the Hough Transform for detecting circles(and provides their radii too).
 
 ## The Hough Transform:
