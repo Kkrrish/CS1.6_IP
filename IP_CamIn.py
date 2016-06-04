@@ -8,16 +8,23 @@ minB=0
 maxW=0
 minW=0
 
+#calibration flag
+calib=1
+
+#declare default camera object
 cap = cv2.VideoCapture(0)
 
-# Capture frame-by-frame
+
+# Capture a frame
 ret, p = cap.read()
-j=cv2.cvtColor(p,cv2.COLOR_BGR2GRAY)
+
+#release the resource
+cap.release()
+
 #read image as grayscale(Hough needs a single channel image)
 #j is grayscale, p is color(RGB), q is color(HSV)
-#j=cv2.imread('WithCoins.jpg',0)
-#p=cv2.imread('WithCoins.jpg',-1)
-q=cv2.cvtColor(p,cv2.COLOR_RGB2HSV)
+j=cv2.cvtColor(p,cv2.COLOR_BGR2GRAY)
+q=cv2.cvtColor(p,cv2.COLOR_BGR2HSV)
 q=cv2.medianBlur(q,7)
 j=cv2.medianBlur(j,5)
 centrej=cv2.cvtColor(j,cv2.COLOR_GRAY2RGB)
@@ -98,34 +105,39 @@ def calc_Range_BW(array):
 		rangeBW[0][a]+=big+0.8*(big-small)
 		rangeBW[1][a]+=small-0.8*(big-small)
 
+#calibrate only once
+if calib :
 
 #read coordinates of pockets
-show_Window_coords('Click on all pockets')
-print pockets
+	show_Window_coords('Click on all pockets')
+	print pockets
 
 #read red, black and white colour arrays(b,g,r)
-show_Window('Click on all the red ends')
-colorRed=colors
-print colorRed
-colors=[]
-show_Window('Click on all the black coins')
-colorBlack=colors
-print colorBlack
-colors=[]
-show_Window('Click on all the white coins')
-colorWhite=colors
-print colorWhite
-colors=[]
+	show_Window('Click on all the red ends')
+	colorRed=colors
+	print colorRed
+	colors=[]
+	show_Window('Click on all the black coins')
+	colorBlack=colors
+	print colorBlack
+	colors=[]
+	show_Window('Click on all the white coins')
+	colorWhite=colors
+	print colorWhite
+	colors=[]
 
-#alculating and displaying ranges of red ends, and black white coins
-calc_Range(colorRed)
-print rangeRedEnd
-calc_Range_BW(colorBlack)
-rangeB=rangeBW
-print rangeBW
-rangeBW=[[0,0],[0,0]]
-calc_Range_BW(colorWhite)
-print rangeBW
+#calculating and displaying ranges of red ends, and black white coins
+	calc_Range(colorRed)
+	print rangeRedEnd
+	calc_Range_BW(colorBlack)
+	rangeB=rangeBW
+	print rangeBW
+	rangeBW=[[0,0],[0,0]]
+	calc_Range_BW(colorWhite)
+	print rangeBW
+
+#once calibrated, set flag
+calib=0
 
 #find circles using the Hough Transform
 circles=cv2.HoughCircles(j,cv.CV_HOUGH_GRADIENT,1,5,param1=100,param2=15,minRadius=7,maxRadius=10)
