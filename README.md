@@ -18,10 +18,10 @@ It was added primarily due to its requirement in my specific application.
 
 ##Algorithm Integration:
 The Decision Making Algorithm for the Carrom Playing Bot in our project was developed independently from Image Processing.
-The final merged file has been added here. w
+The final merged file has been added here.
 It is capable of:
--Image Processing(Coin Detection and Identification)
--Serial Communication with Arduino for shot initiation and motor control
--Shot decision using AI
+1.Image Processing(Coin Detection and Identification).
+2.Serial Communication with Arduino for shot initiation and motor control.
+3.Shot decision using AI.
 
 ### Thank you.
