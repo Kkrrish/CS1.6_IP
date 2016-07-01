@@ -16,4 +16,12 @@ Adds flexibility of environment and lighting condition.(Note: HSV is used for cl
 This enables you to attach a USB webcam for the purpose of image capture.
 It was added primarily due to its requirement in my specific application.
 
+##Algorithm Integration:
+The Decision Making Algorithm for the Carrom Playing Bot in our project was developed independently from Image Processing.
+The final merged file has been added here. w
+It is capable of:
+-Image Processing(Coin Detection and Identification)
+-Serial Communication with Arduino for shot initiation and motor control
+-Shot decision using AI
+
 ### Thank you.
