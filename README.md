@@ -27,4 +27,7 @@ It is capable of:
 
 3.Shot decision using AI.
 
+##Note:
+"SerialEnabled.py" and "FullCS.py" are Fully featured files for implementation, others are individual features.
+
 ### Thank you.
